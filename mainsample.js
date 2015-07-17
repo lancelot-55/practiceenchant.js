@@ -10,14 +10,44 @@ window.onload = function () {
             knight.image = core.assets['chara5.png'];
             knight.x = 0;
             knight.y = 0;
-            knight.frame = 7;
+	    //初期画像フレーム位置
+            knight.frame = 0;
 
             knight.addEventListener('enterframe', function() {
-                if (core.input.left) this.x -= 5;
-                if (core.input.right) this.x += 5;
-                if (core.input.up) this.y -= 5;
-                if (core.input.down) this.y += 5;
-		
+                if (core.input.left) {
+                    this.x -= 5;
+		    if((this.frame < 11) && (this.frame >= 9)) {
+			this.frame++;
+		    }else{
+			this.frame = 9;
+		    }
+		}
+                if (core.input.right) {
+                    this.x += 5;
+		    if((this.frame < 20) && (this.frame >= 18)) {
+			this.frame++;
+		    }else{
+			this.frame = 18;
+		    }
+		}
+                if (core.input.up) {
+                    this.y -= 5;
+		    if((this.frame < 29) && (this.frame >= 27)) {
+			this.frame++;
+		    }else{
+			this.frame = 27;
+		    }
+		}
+                if (core.input.down) {
+		    this.y += 5;
+                    if ((this.frame < 2) && (this.frame >= 0)) {
+                        this.frame++;
+		    }else{
+			this.frame = 0;
+		    }
+		}
+
+
             });
 
             
